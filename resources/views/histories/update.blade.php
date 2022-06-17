@@ -16,6 +16,7 @@
           <input type="hidden" name="pemda_id" class="form-control id_pemda" >
           <input type="hidden" name="nominal_lama" class="form-control nominal_lama">
           <input type="hidden" name="tanggal_setoran" class="form-control tanggal_setoran">
+          <input type="hidden" name="triwulan" class="form-control triwulan">
           {{-- <input type="hidden" name="total_setoran" class="form-control total_setoran" > --}}
           {{-- <input type="hidden" name="pe" class="form-control total_setoran" > --}}
           {{-- <input type="hidden" name="pemda_id" class="form-control" > --}}

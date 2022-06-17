@@ -104,6 +104,8 @@ class DashboardController extends Controller
    
         }
 
+
+        $data['header'] = 'Setoran Saham | Dashboard';
         $data['dataPemda'] = $getPemda;
 
 
@@ -120,6 +122,7 @@ class DashboardController extends Controller
 
         return view(
             'dashboard\index',
+
             $data
         );
     }

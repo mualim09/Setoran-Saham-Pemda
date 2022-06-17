@@ -18,7 +18,9 @@
                         <select class="form-control" name="kodePemda" id="pilihanPemda" required>
                             <option value="" selected>---- Pilih Daerah -------</option>
                             @foreach ($listPemda as $key => $lp)
-                                <option value="{{ $lp->id }}" {{-- {{ old('kodePemda') == $key ? "selected" : "" }} --}}>
+                                <option value="{{ $lp->id }}"
+                                {{ request('kodePemda') == $lp->id ? 'selected':''}}
+                                >
                                     {{ $lp->pemda_name }}</option>
                             @endforeach
 
@@ -99,6 +101,8 @@
         var date = new Date();
         $('#tanggal_setoran').datepicker({
             dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
              //minDate:new Date(limitDatePicker),
              maxDate:new Date(currentYear, currentMonth, currenDate),
 

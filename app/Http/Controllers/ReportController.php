@@ -56,6 +56,7 @@ class ReportController extends Controller
            
 
                 return view('report.index', [
+                    'header'=>'Setoran Saham | Report',
                     'report_saldo' => $reportSaldo,
                     'report_setoran' => $reportSetoran,
                     'hidedata' => false,
@@ -115,6 +116,7 @@ class ReportController extends Controller
                     
 
                 return view('report.index', [
+                    'header'=>'Setoran Saham | Report',
                     'report_saldo' => null,
                     'report_setoran' => null,
                     'hidedata' => true,

@@ -81,7 +81,7 @@
             var nominallama = $(this).data('nominalsetoran');
             // var totalsetoran = $(this).data('totalsetoran');
             var tanggalsetoran = $(this).data('tanggalsetoran');
-            // var triwulan = $(this).data('triwulan');
+             var triwulan = $(this).data('triwulan');
 
             // console.log(id);
             // console.log(formatNominal(nominalsetoran));    
@@ -103,6 +103,7 @@
             $('.nominal_lama').val(nominalsetoran);
 
             $('.tanggal_setoran').val(tanggalsetoran);
+            $('.triwulan').val(triwulan);
            
             $('.form-edit').attr('action', '/histories/'+id);
         });
@@ -417,6 +418,7 @@
                                                                     data-pemdaname="{{$ls->pemda_name}}"
                                                                     data-nominalsetoran="{{$ls->nominal_setoran}}"
                                                                     data-tanggalsetoran="{{$ls->tanggal_setoran}}"
+                                                                    data-triwulan="{{$ls->triwulan}}"
                                                                     {{-- data-totalsetoran="{{$ls->total_setoran}}" --}}
                                                                     {{-- data-triwulan="{{$ls->triwulan}}" --}}
                                                                     class="btn btn-warning button-update"><i class="fas fa-cogs"></i></a>

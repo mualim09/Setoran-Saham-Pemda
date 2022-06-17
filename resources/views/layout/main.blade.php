@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Setoran Saham</title>
+  <link rel="icon" href="{{url('')}}/logo_bank_sumut.jpg">
+    
+  <title>{{$header}}</title>
 
   <!-- Google Font: Source Sans Pro -->
  
