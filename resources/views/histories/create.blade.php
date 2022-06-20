@@ -50,6 +50,7 @@
 
 
                 </div>
+                
 
 
 
@@ -85,6 +86,8 @@
 
     var limitMonth;
 
+    //var limitCustom = new Date({{ request('tahun')=='' ? date('Y') : request('tahun') }} , 1, 31);
+
     if (currentMonth <= 3) {
         limitMonth=1;
     } else if (currentMonth <= 6) {
@@ -100,11 +103,25 @@
 
         var date = new Date();
         $('#tanggal_setoran').datepicker({
+            yearRange: '2015:{{ request('tahun')=='' ?  date('Y') : request('tahun')}}',
             dateFormat: 'yy-mm-dd',
             changeMonth: true,
             changeYear: true,
              //minDate:new Date(limitDatePicker),
-             maxDate:new Date(currentYear, currentMonth, currenDate),
+             maxDate:
+                @if((request('tahun')!='') && (request('tahun')!= date('Y'))) 
+                    
+                    new Date('{{request('tahun')}}-12-31') 
+                
+                @elseif (request('tahun')=='')
+                    new Date('{{date('Y-m-d')}}')
+                @else 
+
+                    @if(request('tahun')== date('Y'))
+                        new Date('{{date('Y-m-d')}}')
+                    
+                    @endif
+                @endif
 
 
         }).datepicker("setDate", date);

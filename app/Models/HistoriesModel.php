@@ -103,6 +103,8 @@ class HistoriesModel extends Model
                 end	
             
             ,
+            updated_at = now()
+            ,
             total_akhir = total_akhir+ ".$nominalSetoran." where pemda_id= ".$kodePemda." and tahun between ".$tahun."  and ".date('Y')."
 
     "
@@ -241,6 +243,8 @@ class HistoriesModel extends Model
                         
                 end	
             
+            ,
+            updated_at = now()
             ,
             total_akhir = total_akhir- ".$nominalSetoran." where pemda_id= ".$kodePemda." and tahun between ".$tahun."  and ".date('Y')."
 

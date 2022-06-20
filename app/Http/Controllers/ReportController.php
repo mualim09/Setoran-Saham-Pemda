@@ -87,9 +87,9 @@ class ReportController extends Controller
                             // echo 'excel';
                             return Excel::download(new ReportExport($tahun), 'data_setoran.xlsx');
                             
-                            // $report = reportModel::bigReport($tahun);
                             // // // echo json_encode($report);
                             // // exit;
+                            // $report = reportModel::bigReport($tahun);
                             // $data=[
                             //     'report'=>$report,
                             //     'kalkulasi'=>ReportController::callAllData($tahun), 

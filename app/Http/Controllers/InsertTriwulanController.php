@@ -22,7 +22,7 @@ class InsertTriwulanController extends Controller
 
     public function insertTriwulan1(){
         $tahun=date('Y');
-        $query = 'UPDATE t_saldo_akhir SET triwulan1 = total_akhir where tahun='.$tahun; 
+        $query = 'UPDATE t_saldo_akhir SET triwulan1 = total_akhir where tahun='.$tahun.'and updated_at=now()'; 
         // $query = 'UPDATE t_saldo_akhir SET triwulan1 = total_akhir where tahun='.date('Y'); 
 
         $data = [];
@@ -43,7 +43,7 @@ class InsertTriwulanController extends Controller
     public function insertTriwulan2(){
         $tahun=date('Y');
 
-        $query = 'UPDATE t_saldo_akhir SET triwulan2 = total_akhir where tahun='.$tahun; 
+        $query = 'UPDATE t_saldo_akhir SET triwulan2 = total_akhir where tahun='.$tahun.'and updated_at=now()'; 
 
         $data = [];
         $setToTriwulan = DB::update($query);
@@ -62,7 +62,7 @@ class InsertTriwulanController extends Controller
     public function insertTriwulan3(){
         $tahun=date('Y');
 
-        $query = 'UPDATE t_saldo_akhir SET triwulan3 = total_akhir where tahun='.$tahun; 
+        $query = 'UPDATE t_saldo_akhir SET triwulan3 = total_akhir where tahun='.$tahun.'and updated_at=now()'; 
         
   
        
@@ -82,7 +82,7 @@ class InsertTriwulanController extends Controller
     public function insertTriwulan4(){
         $tahun=date('Y');
 
-        $query = 'UPDATE t_saldo_akhir SET triwulan4 = total_akhir where tahun='.$tahun; 
+        $query = 'UPDATE t_saldo_akhir SET triwulan4 = total_akhir where tahun='.$tahun.'and updated_at=now()'; 
   
         $data = [];
         $setToTriwulan = DB::update($query);
@@ -109,8 +109,8 @@ class InsertTriwulanController extends Controller
         $getPrevYear = DB::select($query);
        
 
-        $insertToNextYear='INSERT into t_saldo_akhir (pemda_id, tahun, triwulan1,triwulan2,triwulan3,triwulan4, total_akhir)
-        values(?,?,?,?,?,?,?)';
+        $insertToNextYear='INSERT into t_saldo_akhir (pemda_id, tahun, triwulan1,triwulan2,triwulan3,triwulan4, total_akhir, created_at)
+        values(?,?,?,?,?,?,?,now())';
 
         foreach($getPrevYear as $gp){
             

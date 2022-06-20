@@ -266,7 +266,7 @@
                         <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
         
                         <div class="info-box-content">
-                        <span class="info-box-text">Total Saldo Akhir tahun ini </span>
+                        <span class="info-box-text">Total Saldo Akhir tahun @if(request('tahun')==date('Y')) ini @else {{request('tahun')}} @endif</span>
                         <span class="info-box-number">
                             Rp. {{(number_format($statistikSetoran))}}
 
@@ -283,7 +283,7 @@
                         <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
         
                         <div class="info-box-content">
-                        <span class="info-box-text">Total Growth Tahun ini</span>
+                        <span class="info-box-text">Total Growth Tahun @if(request('tahun')==date('Y')) ini @else {{request('tahun')}} @endif</span>
                        
                         <span class="info-box-number">Rp. {{(number_format($total_grow))}}</span>
                         </div>

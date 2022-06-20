@@ -9,7 +9,6 @@ use App\Models\HistoriesModel as historiesModel;
 
 class HistoriesController extends Controller
 {
-    //
 
     public function index(){
 
@@ -27,17 +26,12 @@ class HistoriesController extends Controller
                         ->where('t_setoran.pemda_id', '=', request('kodePemda'))
                         ->whereYear('t_setoran.tanggal_setoran', '=', request('tahun'))
                         
-                        ->orderBy('created_at', 'ASC')
+                        ->orderBy('tanggal_setoran', 'DESC')
 
                         ->get();
 
                     $saldoTahunLalu =  DB::select('select * from t_saldo_akhir where pemda_id='.request('kodePemda').' AND tahun = '.(request('tahun') - 1));
                     
-                    
-                    
-                    
-
-                    // $setoranPenyertaan = DB::select("SELECT sum(nominal_setoran) as total_set, triwulan from t_setoran where year(tanggal_setoran)= ".request('tahun')." group by triwulan");
                     
                     
       
@@ -49,9 +43,7 @@ class HistoriesController extends Controller
                         $saltahunlalu = $saldoTahunLalu[0]->total_akhir;
                     }
 
-         
 
-                    
                 $calculateSetoran = historiesModel::calculateSetoran(request('tahun'),request('kodePemda'));
                 
                 

@@ -26,15 +26,15 @@ $sumPersenSaham=0;
         <tr>
             <th rowspan="2" style="text-align: center;">No. </th>
             <th colspan="3" style="text-align: center;">Saldo Tahun Lalu {{($tahun  - 1)}}</th>
-			<th></th>
+			
             <th colspan="4" style="text-align: center; background-color:#007bff;color:white;"> Triwulan 1 </th>
-			<th></th>
+			
             <th colspan="4" style="text-align: center; background-color:#17a2b8;color:white;"> Triwulan 2 </th>
-			<th></th>
+			
             <th colspan="4" style="text-align: center; background-color:#28a745;color:white;"> Triwulan 3 </th>
-			<th></th>
+			
             <th colspan="4" style="text-align: center; background-color:#ffc107;"> Triwulan 4 </th>
-			<th></th>
+			
             <th colspan="2" style="text-align: center; background-color:#6c757d;color:white;"> Total Growth </th>
         </tr>
         <tr style="font-weight:bold">
@@ -43,28 +43,28 @@ $sumPersenSaham=0;
             <th style="width: 18em font-weight:bold">Pemegang Saham </th>
             <th style="width: 20em">Saldo Terakhir (Rp.)</th>
             <th style="width: 10em">% Saham </th>
-			<th></th>
+			
             <th style="width: 20em;text-align: center; background-color:#007bff;color:white;">Setoran (Rp.)</th>
             <th style="width: 20em;text-align: center; background-color:#007bff;color:white;">Saldo Akhir (Rp.)</th>
             <th style="width: 10em;text-align: center; background-color:#007bff;color:white;">% Saham </th>
             <th style="width: 10em;ext-align: center; background-color:#007bff;color:white;">% Growth </th>
-			<th></th>
+			
 
             <th style="width: 20em; text-align: center; background-color:#17a2b8;color:white;">Setoran (Rp.)</th>
             <th style="width: 20em; text-align: center; background-color:#17a2b8;color:white;">Saldo Akhir (Rp.)</th>
             <th style="width: 10em; text-align: center; background-color:#17a2b8;color:white;">% Saham </th>
             <th style="width: 10em; text-align: center; background-color:#17a2b8;color:white;">% Growth </th>
-			<th></th>
+			
             <th style="width: 20em; text-align: center; background-color:#28a745;color:white;">Setoran (Rp.)</th>
             <th style="width: 20em; ext-align: center; background-color:#28a745;color:white;">Saldo Akhir (Rp.)</th>
             <th style="width: 10em; text-align: center; background-color:#28a745;color:white;">% Saham </th>
             <th style="width: 10em; text-align: center; background-color:#28a745;color:white;">% Growth </th>
-			<th></th>
+			
             <th style="width: 20em; text-align: center; background-color:#ffc107;">Setoran (Rp.)</th>
             <th style="width: 20em; text-align: center; background-color:#ffc107;">Saldo Akhir (Rp.)</th>
             <th style="width: 10em; text-align: center; background-color:#ffc107;">% Saham </th>
             <th style="width: 10em; text-align: center; background-color:#ffc107;">% Growth </th>
-			<th></th>
+			
             <th style="width: 20em;text-align: center; background-color:#6c757d;color:white;">Total Setoran (Rp.)</th>
             <th style="width: 10em;text-align: center; background-color:#6c757d;color:white;">% Growth </th>
         </tr>
@@ -83,31 +83,31 @@ $sumPersenSaham=0;
             <td>{{ $rp->pemda_name }}</td>
             <td style="text-align: right;">{{ number_format($rp->saldoakhirthnlalu) }}</td>
             <td style="text-align: right;">{{ number_format($rp->persensahamthnlalu, 2) }}</td>
-			<td></td>
+			
 
             <td style="text-align: right;">{{ number_format($rp->setorantw1) }}</td>
             <td style="text-align: right;">{{ number_format($rp->saldoakhirtw1) }}</td>
             <td style="text-align: right;">{{ number_format($rp->persensahamtw1, 2) }}</td>
             <td style="text-align: right;">{{ number_format($rp->persengrowthtw1, 2) }}</td>
-			<td></td>
+			
 
             <td style="text-align: right;">{{ number_format($rp->setorantw2) }}</td>
             <td style="text-align: right;">{{ number_format($rp->saldoakhirtw2) }}</td>
             <td style="text-align: right;">{{ number_format($rp->persensahamtw2, 2) }}</td>
             <td style="text-align: right;">{{ number_format($rp->persengrowthtw2, 2) }}</td>
-			<td></td>
+			
 
             <td style="text-align: right;">{{ number_format($rp->setorantw3) }}</td>
             <td style="text-align: right;">{{ number_format($rp->saldoakhirtw3) }}</td>
             <td style="text-align: right;">{{ number_format($rp->persensahamtw3, 2) }}</td>
             <td style="text-align: right;">{{ number_format($rp->persengrowthtw3, 2) }}</td>
-			<td></td>
+			
 
             <td style="text-align: right;">{{ number_format($rp->setorantw4) }}</td>
             <td style="text-align: right;">{{ number_format($rp->saldoakhirtw4) }}</td>
             <td style="text-align: right;">{{ number_format($rp->persensahamtw4, 2) }}</td>
             <td style="text-align: right;">{{ number_format($rp->persengrowthtw4, 2) }}</td>
-			<td></td>
+			
 
             <td style="text-align: right;">{{ number_format($rp->totsetoran) }}</td>
             <td style="text-align: right;">{{ number_format($rp->growthakhir, 2) }}</td>
@@ -120,11 +120,10 @@ $sumPersenSaham=0;
             <td></td>
             <td style="text-align: right;">{{number_format($kalkulasi['tahun_lalu']['total'])}}</td>
             <td></td>
-            <td></td>
             
             <td>{{number_format($kalkulasi['kalkulasi']['triwulan1']['totalSetPenyertaan'])}}</td>
             <td style="text-align: right;">{{number_format($kalkulasi['kalkulasi']['triwulan1']['totalSaldoAkhir'])}}</td>
-            <td></td>
+            
             <td style="text-align: right;">
             {{number_format(
                 
@@ -136,11 +135,9 @@ $sumPersenSaham=0;
                 , 2)  
                 
                 }}</td>
-			<td></td>
-
+            <td></td>
             <td style="text-align: right;">{{number_format($kalkulasi['kalkulasi']['triwulan2']['totalSetPenyertaan'])}}</td>
             <td style="text-align: right;">{{number_format($kalkulasi['kalkulasi']['triwulan2']['totalSaldoAkhir'])}}</td>
-            <td></td>
             
             
             <td style="text-align: right;">
@@ -161,7 +158,6 @@ $sumPersenSaham=0;
 
             <td style="text-align: right;">{{number_format($kalkulasi['kalkulasi']['triwulan3']['totalSetPenyertaan'])}}</td>
             <td style="text-align: right;">{{number_format($kalkulasi['kalkulasi']['triwulan3']['totalSaldoAkhir'])}}</td>
-            <td></td>
             
             <td style="text-align: right;">
             
@@ -177,8 +173,7 @@ $sumPersenSaham=0;
                 }}
             
             </td>
-			<td></td>
-
+            <td></td>
             <td style="text-align: right;">{{number_format($kalkulasi['kalkulasi']['triwulan4']['totalSetPenyertaan'])}}</td>
             <td style="text-align: right;">{{number_format($kalkulasi['kalkulasi']['triwulan4']['totalSaldoAkhir'])}}</td>
             <td></td>
@@ -196,8 +191,6 @@ $sumPersenSaham=0;
                 }}
             
             </td>
-			<td></td>
-
             <td>
             {{number_format($kalkulasi['growth']['total'])}}
             </td>
@@ -222,7 +215,6 @@ $sumPersenSaham=0;
 			<td style="text-align:right;">{{number_format($kalkulasi['tahun_lalu']['totalDiPemprov'])}}</td>
 			<td style="text-align:right;">{{number_format($kalkulasi['tahun_lalu']['persenSahamPemprov'], 2)}}</td>
 			<td></td>
-			<td></td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan1']['totalDiPemprov'])}}</td>
             <td style="text-align:right;">
 
@@ -231,10 +223,8 @@ $sumPersenSaham=0;
             </td>
 			<td></td>
 			<td></td>
-			<td></td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan2']['totalDiPemprov'])}}</td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan2']['persenSahamPemprov'],2)}}</td>
-			<td></td>
 			<td></td>
 			<td></td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan3']['totalDiPemprov'])}}</td>
@@ -242,10 +232,8 @@ $sumPersenSaham=0;
 			
 			<td></td>
 			<td></td>
-			<td></td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan4']['totalDiPemprov'])}}</td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan4']['persenSahamPemprov'],2)}}</td>
-			<td></td>
 			<td></td>
             <td style="text-align:right;">{{number_format($kalkulasi['growth']['totalDiPemprov'])}}</td>
 		</tr>
@@ -261,7 +249,7 @@ $sumPersenSaham=0;
 			
             
             <td></td>
-			<td></td>
+		
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan1']['totalPemkabkot'])}}</td>
 			<td style="text-align:right;">
             
@@ -273,7 +261,6 @@ $sumPersenSaham=0;
             </td>
 			 
              
-             <td></td>
 			<td></td>
 			<td></td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan2']['totalPemkabkot'])}}</td>
@@ -292,7 +279,6 @@ $sumPersenSaham=0;
             </td>
 			<td></td>
 			<td></td>
-			<td></td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan3']['totalPemkabkot'])}}</td>
             <td style="text-align:right;">
             @if($kalkulasi['kalkulasi']['triwulan3']['persenSahamPemkabkot']==100)
@@ -301,10 +287,7 @@ $sumPersenSaham=0;
                 {{number_format($kalkulasi['kalkulasi']['triwulan3']['persenSahamPemkabkot'],2)}} 
             @endif
             
-            {{-- {{number_format($kalkulasi['kalkulasi']['triwulan3']['persenSahamPemkabkot'],2)}} --}}
-            
             </td>
-			<td></td>
 			<td></td>
 			<td></td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan4']['totalPemkabkot'])}}</td>
@@ -314,12 +297,9 @@ $sumPersenSaham=0;
             @else
                 {{number_format($kalkulasi['kalkulasi']['triwulan4']['persenSahamPemkabkot'],2)}} 
             @endif
-            
-            {{-- {{number_format($kalkulasi['kalkulasi']['triwulan4']['persenSahamPemkabkot'],2)}} --}}
-            
+             
             
             </td>
-			<td></td>
 			<td></td>
             <td style="text-align:right;">{{number_format($kalkulasi['growth']['totalPemkabkot'])}}</td>
 		</tr>
@@ -338,7 +318,6 @@ $sumPersenSaham=0;
             
             , 2)}}</td>
 			
-			<td></td>
             
             
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan1']['totalSetPenyertaan'])}}</td>
@@ -367,7 +346,6 @@ $sumPersenSaham=0;
 
 
 			<td></td>
-			<td></td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan2']['totalSetPenyertaan'])}}</td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan2']['totalSaldoAkhir'])}}</td>
             <td style="text-align:right;">
@@ -390,7 +368,6 @@ $sumPersenSaham=0;
 
 
 
-			<td></td>
 			<td></td>
             <td style="text-align:right;">
             
@@ -419,7 +396,6 @@ $sumPersenSaham=0;
 
 
 			<td></td>
-			<td></td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan4']['totalSetPenyertaan'])}}</td>
             <td style="text-align:right;">{{number_format($kalkulasi['kalkulasi']['triwulan4']['totalSaldoAkhir'])}}</td>
             <td style="text-align:right;">
@@ -441,7 +417,6 @@ $sumPersenSaham=0;
 
 
 
-			<td></td>
 			<td></td>
 
 
