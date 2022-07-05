@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('plugin-css')
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> --}}
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{  url('') }}/plugins/fontawesome-free/css/all.min.css">
     <!-- DataTables -->
@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="{{  url('') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{  url('') }}/dist/css/adminlte.min.css">
+
+      <!-- Select2 -->
+    <link rel="stylesheet" href="{{  url('') }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{  url('') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    
 @endsection
 
 @section('plugin-js')
@@ -33,17 +38,37 @@
     <script src="{{  url('') }}/plugins/pdfmake/pdfmake.min.js"></script>
     <script src="{{  url('') }}/plugins/pdfmake/vfs_fonts.js"></script>
     <script src="{{  url('') }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="{{  url('') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    {{-- <script src="{{  url('') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script> --}}
     <script src="{{  url('') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <!-- AdminLTE App -->
     <script src="{{  url('') }}/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
      <!-- Page specific script -->
+    <!-- Select2 -->
+    <script src="{{  url('') }}/plugins/select2/js/select2.full.min.js"></script>
 
     
     <script src="{{  url('') }}/js/jquery/jquery-ui.js"></script>
     <script>
         $(document).ready(function() {
+            $('.select2pemda').select2({
+            theme: 'bootstrap4',
+            
+            });
+
+            $('.select2tahun').select2({
+                theme: 'bootstrap4',
+            
+            });
+            $('.select2tahun').on('keypress', '.select2-search__field', function () {
+                console.log($(this).val($(this).val().replace(/[^\d].+/, "")));
+                
+
+            });
+
+
+
+
            $('#reportTable').DataTable({
                 "paging": true,
                 "lengthChange": false,
@@ -83,9 +108,6 @@
             var tanggalsetoran = $(this).data('tanggalsetoran');
              var triwulan = $(this).data('triwulan');
 
-            // console.log(id);
-            // console.log(formatNominal(nominalsetoran));    
-            // console.log(tanggalsetoran);    
             
 
             $('.id').val(id);
@@ -184,15 +206,15 @@
                             <form method="get " action="/histories">
 
                                 <div class="row">
-                                    <div class="col-sm-8">
+                                    <div class="col-md-12">
                                         <!-- text input -->
                                         <div class="form-group">
 
                                             <h5>Cari Data </h5>
 
                                             <div class="row">
-                                                <div class="col-sm-6">
-                                                    <select class="form-control" name="kodePemda" id="listPemda" required>
+                                                <div class="col-6 col-xs-12">
+                                                    <select class="form-control select2pemda" name="kodePemda" id="listPemda" required>
                                                         <option value="" selected>---- Pilih Daerah -------</option>
                                                         @foreach ($listPemda as $key=>  $lp)
 
@@ -212,11 +234,11 @@
                                                     </select>
                                                     
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <select class="form-control" name="tahun" required>
+                                                <div class="col-6 col-xs-12">
+                                                    <select class="form-control select2tahun " name="tahun" required>
                                                         <option value="">---Pilih Tahun---</option>
                                                         @php
-                                                            $earliest_year = 2019;
+                                                            $earliest_year = 2015;
                                                         @endphp
 
                                                         @foreach (range(date('Y'), $earliest_year) as $x)

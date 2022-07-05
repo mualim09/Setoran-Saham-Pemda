@@ -15,6 +15,11 @@
     <link href="{{ url('') }}/datatablejs/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="{{ url('') }}/datatablejs/fixedColumns.dataTables.min.css" rel="stylesheet" />
 
+      <!-- Select2 -->
+    <link rel="stylesheet" href="{{  url('') }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{  url('') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    
+
     <style>
         th,
         td {
@@ -52,6 +57,8 @@
     <script src="{{ url('') }}/plugins/chart.js/Chart.min.js"></script>
     {{-- <script type="text/javascript" src="http://www.google.com/jsapi"></script> --}}
 
+    <!-- Select2 -->
+    <script src="{{  url('') }}/plugins/select2/js/select2.full.min.js"></script>
 
 
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> --}}
@@ -71,6 +78,25 @@
         //        });
 
         $(document).ready(function() {
+
+            $('.select2pemda').select2({
+            theme: 'bootstrap4',
+            
+            });
+
+            $('.select2tahun').select2({
+                theme: 'bootstrap4',
+            
+            });
+            $('.select2tahun').on('keypress', '.select2-search__field', function () {
+                console.log($(this).val($(this).val().replace(/[^\d].+/, "")));
+                
+
+            });
+
+
+
+
             var table = $('#tableReport').DataTable({
                 scrollY: "500px",
                 scrollX: true,
@@ -126,7 +152,7 @@
                                                     Nama Pemda
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <select class="form-control" name="kodePemda" id="listPemda" required>
+                                                    <select class="form-control select2pemda" name="kodePemda" id="listPemda" required>
                                                         <option value="">---- Pilih Daerah ----</option>
                                                         <option value="0" {{ request('kodePemda') == 0 ? 'selected' : '' }}>
                                                             Semua Pemda</option>
@@ -146,11 +172,11 @@
                                                     Tahun
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <select name="tahun" id="" class="form-control" required>
+                                                    <select name="tahun" id="" class="form-control select2tahun" required>
                                                         <option value="">---Pilih Tahun---</option>
                                                         @php
                                                             
-                                                            $earliest_year = 2019;
+                                                            $earliest_year = 2015;
                                                         @endphp
                                                         @foreach (range(date('Y'), $earliest_year) as $x)
                                                             <option value={{ $x }}
@@ -586,21 +612,22 @@
                                                                 <th>Growth</th>
                                                                 <th>:</th>
                                                                 <th>
-
-                                                                    @if ($index == 'triwulan1')
-                                                                        @if ($kl['totalSaldoAkhir'] == 0)
-                                                                            {{ number_format(0, 2) }} %
-                                                                        @else
-                                                                            {{ number_format(
-                                                                                (($kl['totalSaldoAkhir'] - $dataSetoran['tahun_lalu']['total']) / $dataSetoran['tahun_lalu']['total']) * 100,
-                                                                                2,
-                                                                            ) }}
-                                                                            %
-                                                                        @endif
-                                                                    @elseif($index == 'triwulan2')
-                                                                        @if ($dataSetoran['kalkulasi']['triwulan2']['totalSaldoAkhir'] == 0)
-                                                                            {{ number_format(0, 2) }}} %
-                                                                        @else
+                                                                {{-- anu {{empty($dataSetoran['tahun_lalu']['total']) }} --}}
+                                                                        
+                                                                        @if ($index == 'triwulan1')
+                                                                            @if ($kl['totalSaldoAkhir'] == 0 OR empty($kl['totalSaldoAkhir']))
+                                                                                {{ number_format(0, 2) }} %
+                                                                            @else
+                                                                                {{ number_format(
+                                                                                    (($kl['totalSaldoAkhir'] - $dataSetoran['tahun_lalu']['total']) / $dataSetoran['tahun_lalu']['total']) * 100,
+                                                                                    2,
+                                                                                ) }}
+                                                                                %
+                                                                            @endif
+                                                                        @elseif($index == 'triwulan2')
+                                                                            @if ($dataSetoran['kalkulasi']['triwulan2']['totalSaldoAkhir'] == 0 OR empty($dataSetoran['kalkulasi']['triwulan2']['totalSaldoAkhir']))
+                                                                                {{ number_format(0, 2) }} %
+                                                                            @else
                                                                             {{ number_format(
                                                                                 (($kl['totalSaldoAkhir'] - $dataSetoran['kalkulasi']['triwulan1']['totalSaldoAkhir']) /
                                                                                     $dataSetoran['kalkulasi']['triwulan1']['totalSaldoAkhir']) *
@@ -610,7 +637,7 @@
                                                                             %
                                                                         @endif
                                                                     @elseif($index == 'triwulan3')
-                                                                        @if ($dataSetoran['kalkulasi']['triwulan3']['totalSaldoAkhir'] == 0)
+                                                                        @if ($dataSetoran['kalkulasi']['triwulan3']['totalSaldoAkhir'] == 0 OR empty($dataSetoran['kalkulasi']['triwulan3']['totalSaldoAkhir']))
                                                                             {{ number_format(0, 2) }} %
                                                                         @else
                                                                             {{ number_format(
@@ -622,7 +649,7 @@
                                                                             %
                                                                         @endif
                                                                     @elseif($index == 'triwulan4')
-                                                                        @if ($dataSetoran['kalkulasi']['triwulan4']['totalSaldoAkhir'] == 0)
+                                                                        @if ($dataSetoran['kalkulasi']['triwulan4']['totalSaldoAkhir'] == 0 OR empty($dataSetoran['kalkulasi']['triwulan4']['totalSaldoAkhir']))
                                                                             {{ number_format(0, 2) }} %
                                                                         @else
                                                                             {{ number_format(
@@ -632,8 +659,8 @@
                                                                                 2,
                                                                             ) }}
                                                                             %
-                                                                        @endif
-                                                                    @endif
+                                                                        @endif 
+                                                                     @endif
 
 
 
@@ -728,9 +755,11 @@
                                                         <tr>
                                                             <th> Growth</th>
                                                             <th>:</th>
-                                                            <th>
+                                                            <th> @if(empty($dataSetoran['tahun_lalu']['total'])!= 1)
                                                                 {{ number_format(($dataSetoran['growth']['total'] / $dataSetoran['tahun_lalu']['total']) * 100, 2) }}%
-
+                                                                @else
+                                                                {{number_format(0,2)}}
+                                                                @endif
                                                             </th>
                                                         </tr>
 

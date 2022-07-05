@@ -71,7 +71,7 @@
     <!-- /.modal-dialog -->
   </div>
   <script src="{{  url('') }}/plugins/jquery/jquery.min.js"></script> 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+  {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    --}}
   
   <script src="{{ url('') }}/js/mask/js/jquery.mask.min.js"></script>
     

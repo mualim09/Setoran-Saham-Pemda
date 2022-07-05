@@ -16,6 +16,9 @@ class HistoriesController extends Controller
 
         switch (request('action')) {    
             case 'searchpemda':
+                // echo request('kodePemda'); 
+                // echo request('tahun'); 
+                // exit;
                 if (request('kodePemda') && request('tahun')) {
 
                     $namaPemda = DB::select('select * from t_pemda where id='.request('kodePemda'))[0]->pemda_name;
@@ -75,7 +78,8 @@ class HistoriesController extends Controller
 
 
                 }else{
-                    return redirect('/setoran');
+                    return redirect('/histories?kodePemda=1&tahun='.date('Y').'&action=searchpemda');
+                    // echo 
                 }
 
             default :
