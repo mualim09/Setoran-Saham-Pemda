@@ -372,6 +372,19 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-sm-12 table-container">
+
+                                                        {{-- <div class="row">
+
+                                                            <div class="col-4">
+
+                                                                <label class="my-2">Pilih Pemda</label>
+                                                                <select class="form-control select2pemda" name="kodePemda" id="listPemda" required>
+                                                                    <option value="">---- Pilih Daerah ----</option>
+                                                                    
+
+                                                                </select>
+                                                            </div>
+                                                        </div> --}}
                                                         {{-- <table class="table table-report table-bordered table-hover" id="reportTable" > --}}
                                                         <table
                                                             class="stripe row-border order-column table table-bordered table-hover"
@@ -618,23 +631,33 @@
                                                                             @if ($kl['totalSaldoAkhir'] == 0 OR empty($kl['totalSaldoAkhir']))
                                                                                 {{ number_format(0, 2) }} %
                                                                             @else
-                                                                                {{ number_format(
-                                                                                    (($kl['totalSaldoAkhir'] - $dataSetoran['tahun_lalu']['total']) / $dataSetoran['tahun_lalu']['total']) * 100,
-                                                                                    2,
-                                                                                ) }}
-                                                                                %
+
+                                                                                @if((empty($dataSetoran['tahun_lalu']['total'])))
+                                                                                {{0}} %
+                                                                                @else
+                                                                                    {{ number_format(
+                                                                                        (($kl['totalSaldoAkhir'] - $dataSetoran['tahun_lalu']['total']) / $dataSetoran['tahun_lalu']['total']) * 100,
+                                                                                        2,
+                                                                                    ) }} 
+                                                                                    %
+
+                                                                                @endif
+                                                                                {{-- {{json_encode(empty($dataSetoran['tahun_lalu']['total']))}} --}}
+
+
                                                                             @endif
                                                                         @elseif($index == 'triwulan2')
                                                                             @if ($dataSetoran['kalkulasi']['triwulan2']['totalSaldoAkhir'] == 0 OR empty($dataSetoran['kalkulasi']['triwulan2']['totalSaldoAkhir']))
                                                                                 {{ number_format(0, 2) }} %
                                                                             @else
-                                                                            {{ number_format(
-                                                                                (($kl['totalSaldoAkhir'] - $dataSetoran['kalkulasi']['triwulan1']['totalSaldoAkhir']) /
-                                                                                    $dataSetoran['kalkulasi']['triwulan1']['totalSaldoAkhir']) *
-                                                                                    100,
-                                                                                2,
-                                                                            ) }}
-                                                                            %
+                                                                                
+                                                                                {{ number_format(
+                                                                                    (($kl['totalSaldoAkhir'] - $dataSetoran['kalkulasi']['triwulan1']['totalSaldoAkhir']) /
+                                                                                        $dataSetoran['kalkulasi']['triwulan1']['totalSaldoAkhir']) *
+                                                                                        100,
+                                                                                    2,
+                                                                                ) }}
+                                                                                %
                                                                         @endif
                                                                     @elseif($index == 'triwulan3')
                                                                         @if ($dataSetoran['kalkulasi']['triwulan3']['totalSaldoAkhir'] == 0 OR empty($dataSetoran['kalkulasi']['triwulan3']['totalSaldoAkhir']))

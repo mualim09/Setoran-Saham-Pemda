@@ -125,16 +125,24 @@ $sumPersenSaham=0;
             <td style="text-align: right;">{{number_format($kalkulasi['kalkulasi']['triwulan1']['totalSaldoAkhir'])}}</td>
             
             <td style="text-align: right;">
-            {{number_format(
+            
+            @if (empty($kalkulasi['tahun_lalu']['total']))
+                {{0}}
+            @else
+                {{number_format(
                 
                 ((($kalkulasi['kalkulasi']['triwulan1']['totalSaldoAkhir'] - 
                 $kalkulasi['tahun_lalu']['total']) / $kalkulasi['tahun_lalu']['total'])*100)
                 
-                
-                
                 , 2)  
                 
-                }}</td>
+                }}
+            
+            @endif
+            
+                
+                
+                </td>
             <td></td>
             <td style="text-align: right;">{{number_format($kalkulasi['kalkulasi']['triwulan2']['totalSetPenyertaan'])}}</td>
             <td style="text-align: right;">{{number_format($kalkulasi['kalkulasi']['triwulan2']['totalSaldoAkhir'])}}</td>
@@ -194,7 +202,13 @@ $sumPersenSaham=0;
             <td>
             {{number_format($kalkulasi['growth']['total'])}}
             </td>
-            <td style="text-align: right;">{{number_format(
+            <td style="text-align: right;">
+            
+            @if (empty($kalkulasi['tahun_lalu']['total']))
+            
+            @else 
+
+            {{number_format(
                 
                 ((
                     ($kalkulasi['growth']['total'] / $kalkulasi['tahun_lalu']['total']) )*100)
@@ -203,7 +217,10 @@ $sumPersenSaham=0;
                 
                 , 2)  
                 
-                }}</td>
+                }}
+                
+            @endif
+                </td>
         </tr>
 
 		<tr></tr>

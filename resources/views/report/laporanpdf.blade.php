@@ -313,9 +313,13 @@
                                         <th>Growth</th>
                                         <th>:</th>
                                         <th>
-
-
+                                            @if(empty($tahun_lalu['total']))
+                                            {{0}}
+                                            @else
                                             {{ number_format(($growth['total'] / $tahun_lalu['total']) * 100, 2) }}
+
+                                            @endif
+
                                             %
 
 
